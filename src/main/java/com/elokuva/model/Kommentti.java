@@ -1,4 +1,4 @@
-package com.elokuva.bean;
+package com.elokuva.model;
 
 public class Kommentti {
 	

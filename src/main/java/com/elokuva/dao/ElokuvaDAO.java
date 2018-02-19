@@ -22,8 +22,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
-import com.elokuva.bean.Elokuva;
-import com.elokuva.bean.Kommentti;
+import com.elokuva.model.Elokuva;
+import com.elokuva.model.Kommentti;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 

@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.elokuva.bean.Elokuva;
-import com.elokuva.bean.Kommentti;
+import com.elokuva.model.Elokuva;
+import com.elokuva.model.Kommentti;
 public class KommenttiRowMapper implements RowMapper<Kommentti> {
 	public Kommentti mapRow(ResultSet rs, int rowNum) throws SQLException {
 

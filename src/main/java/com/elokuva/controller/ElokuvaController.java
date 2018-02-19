@@ -18,13 +18,15 @@ import java.text.ParseException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.elokuva.dao.ElokuvaDAO;
-import com.elokuva.bean.Elokuva;
-import com.elokuva.bean.Kommentti;
+import com.elokuva.model.Elokuva;
+import com.elokuva.model.Kommentti;
 
 @Controller
 @RequestMapping(value = "/")
@@ -98,7 +100,7 @@ public class ElokuvaController {
 			model.addAttribute("kommentti", kommentti);
 			return "kommenttiLista";
 		}
-	
+		
 	
 		
 }
