@@ -1,6 +1,10 @@
 package com.elokuva.controller;
 
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URI;
+import java.net.URL;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +20,18 @@ import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -47,44 +58,7 @@ public class ApiController {
 			return elokuvat;
 		}
 		
-		// Elokuva API vastaanota uusi elokuva ja lisää tietokantaan
-		@RequestMapping(value = "/api/elokuva/uusi", method = {RequestMethod.GET, RequestMethod.POST}, produces="application/json;charset=UTF-8")
-		public @ResponseBody String elokuva(@RequestBody Elokuva jsonString) {
-			System.out.println("apissa "+jsonString);
-			edao.luoElokuva(jsonString);
-			return "redirect:/api/elokuva/elokuvat";
-
-		}
-		
-
-		// Elokuvan lisäys API:n avulla toisesta palvelusta
-		@RequestMapping(value = "/vuokraamo/uusi", method = RequestMethod.GET)
-		public String LuoElokuva(Model model) throws IOException {
-			String elokuva=null;
-			model.addAttribute("elokuva", elokuva);
-			return "vuokraamoLisaaElokuva";
-		}
-		
-		// Elokuva lähetä elokuva Apille
-	/*	@RequestMapping(value = "/vuokraamo/uusi", method = RequestMethod.POST, produces="application/json;charset=UTF-8")
-		@ResponseBody 
-		public String vastaanotaElokuva(@RequestBody String elokuva) {
-			System.out.println("vuokraamo lähettää apille elokuvan "+elokuva);
-			return "redirect:/api/elokuva/uusi";
-
-		}
-		*/
-		
-		// Elokuva lähetä elokuva Apille
-		@RequestMapping(value = "/vuokraamo/uusi", method = RequestMethod.POST)
-		@ResponseBody 
-		public String vastaanotaElokuva(@RequestBody String elokuva) {
-			System.out.println("vuokraamo lähettää apille elokuvan "+elokuva);
-			return "redirect:/api/elokuva/uusi";
-
-		}
-
-
-		
+	
+	
 
 }
