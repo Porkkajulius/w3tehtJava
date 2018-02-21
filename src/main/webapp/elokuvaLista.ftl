@@ -13,6 +13,7 @@
 <tr><td>${e.nimi}</td>
 <td><a href ="/elokuva/kommentit/${e.elokuvaID}"><button type="button">Lue kommentit</button></a></td>
 <td><a href ="/elokuva/kommentoi/${e.elokuvaID}"><button type="button">Kirjoita kommentti</button></a></td>
+<td><a href ="/elokuva/poista/${e.elokuvaID}"><button type="button">Poista</button></a></td>
 
  </tr>
 

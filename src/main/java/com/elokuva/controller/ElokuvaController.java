@@ -35,13 +35,6 @@ public class ElokuvaController {
 	@Autowired
 	ElokuvaDAO edao;
 
-	// hello testi
-	@RequestMapping(value = "/hello", method = RequestMethod.GET)
-	public String listInactiveProjects(Model model) throws IOException {
-
-		return "hello";
-	}
-
 	// Elokuvan luonti form
 	@RequestMapping(value = "/elokuva/uusi", method = RequestMethod.GET)
 	public String LuoE(Model model) throws IOException {
@@ -68,6 +61,15 @@ public class ElokuvaController {
 		return "Kommentoi";
 	}
 	
+	// Elokuvan poistaminen
+		@RequestMapping(value = "/elokuva/poista/{id}", method = RequestMethod.GET)
+		public String poistaElokuva(@PathVariable("id") int id, Model model)
+				throws IOException {
+
+			edao.poistaElokuva(id);
+			return "redirect:/elokuvat";
+		}
+
 	// Kommentti formin tietojen vastaanotto
 		@RequestMapping(value = "/elokuva/kommentoi/{id}", method = RequestMethod.POST)
 		public String vastaanotaK(@ModelAttribute(value = "kommentti") Kommentti kommentti) {

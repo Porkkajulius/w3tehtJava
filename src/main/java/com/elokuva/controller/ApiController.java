@@ -58,7 +58,14 @@ public class ApiController {
 			return elokuvat;
 		}
 		
-	
-	
+		// Elokuva API vastaanota uusi elokuva ja lisää tietokantaan
+		@RequestMapping(value = "/api/elokuva/uusi", method = {RequestMethod.GET, RequestMethod.POST}, produces="application/json;charset=UTF-8")
+		public @ResponseBody String elokuva(@RequestBody Elokuva jsonString) {
+			System.out.println("apissa "+jsonString);
+			edao.luoElokuva(jsonString);
+			return "redirect:/api/elokuva/elokuvat";
+
+		}
+
 
 }
