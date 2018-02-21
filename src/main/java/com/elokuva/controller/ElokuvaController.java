@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.elokuva.dao.ElokuvaDAO;
+import com.elokuva.dao.ElokuvaDao;
 import com.elokuva.model.Elokuva;
 import com.elokuva.model.Kommentti;
 
@@ -33,7 +33,7 @@ import com.elokuva.model.Kommentti;
 public class ElokuvaController {
 
 	@Autowired
-	ElokuvaDAO edao;
+	ElokuvaDao edao;
 
 	// Elokuvan luonti form
 	@RequestMapping(value = "/elokuva/uusi", method = RequestMethod.GET)
@@ -77,6 +77,16 @@ public class ElokuvaController {
 			
 			return "redirect:/elokuvat";
 		}
+		
+	// Elokuvien listaus HTML
+		@RequestMapping(value = "/elokuvatUusi", method = RequestMethod.GET)
+		public String listaaE(Model model) throws IOException {
+			List<Elokuva> elokuvat = new ArrayList<Elokuva>();
+			elokuvat = edao.findAll();
+			model.addAttribute("elokuvat", elokuvat);
+
+			return "elokuvaListaUusi.html";
+	}
 
 
 	// Elokuvien listaus db:stä

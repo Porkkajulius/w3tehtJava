@@ -28,7 +28,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Repository
-public class ElokuvaDAO {
+public class ElokuvaDao{
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -130,7 +130,7 @@ public class ElokuvaDAO {
 	}
 
 	// Poista elokuva ID:llä
-	public Elokuva poistaElokuva(int id) {
+	public void poistaElokuva(int id){
 		
 		Object[] parametrit = new Object[] { id };
 		try {
@@ -139,7 +139,8 @@ public class ElokuvaDAO {
 		} catch (IncorrectResultSizeDataAccessException ex) {
 			throw (ex);
 		}
-		return null;
 		
 	}
+
+
 }

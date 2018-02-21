@@ -36,7 +36,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.elokuva.dao.ElokuvaDAO;
+import com.elokuva.dao.ElokuvaDao;
 import com.elokuva.model.Elokuva;
 import com.elokuva.model.Kommentti;
 
@@ -45,7 +45,7 @@ import com.elokuva.model.Kommentti;
 public class ApiController {
 
 	@Autowired
-	ElokuvaDAO edao;
+	ElokuvaDao edao;
 
 		// Elokuva API listaa elokuvat
 		@RequestMapping(value = "/api/elokuva/elokuvat", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
@@ -57,6 +57,17 @@ public class ApiController {
 
 			return elokuvat;
 		}
+		
+		// Elokuvan poistaminen
+		@RequestMapping(value = "/api/elokuva/poista/{id}", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
+		@ResponseStatus(HttpStatus.OK)
+		public @ResponseBody String poistaElokuva(@PathVariable("id") int id, Model model)
+				throws IOException {
+
+			edao.poistaElokuva(id);
+			return "redirect:/elokuvat";
+		}
+		
 		
 		// Elokuva API vastaanota uusi elokuva ja lisää tietokantaan
 		@RequestMapping(value = "/api/elokuva/uusi", method = {RequestMethod.GET, RequestMethod.POST}, produces="application/json;charset=UTF-8")
