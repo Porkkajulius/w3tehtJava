@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+</head>
+<body ng-app="elokuvaApp">
+<hr/>
+<div class="container" ng-controller="ElokuvaController">
+ <table>
+  <tr ng-repeat="elokuva in elokuvat">
+   <td>{{elokuva.elokuvaID}}</td>
+   <td>{{elokuva.nimi}}</td>
+   <!-- ng-click kutsuu poistaElokuva scopea joka on tehty controller.js tiedostossa ja (elokuva.elokuvaID) on elokuva id loopissa -->
+   <td><button ng-click="poistaElokuva(elokuva.elokuvaID)">poista</button></td>
+  </tr>
+  <tr>
+   <td><button ng-click="luoElokuva">{{elokuva.elokuvaID}}Lisää uusi elokuva</button></td>
+   
+
+  </tr>
+</table>
+</div>
+</body>
+<script src="ElokuvaController.js"></script>
+</html>
