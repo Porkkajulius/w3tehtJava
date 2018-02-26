@@ -65,7 +65,7 @@ public class ApiController {
 				throws IOException {
 
 			edao.poistaElokuva(id);
-			return "redirect:/elokuvat";
+			return "redirect:/";
 		}
 		
 		// Elokuvan luonti GET

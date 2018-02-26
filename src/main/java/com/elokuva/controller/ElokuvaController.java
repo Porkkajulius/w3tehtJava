@@ -79,11 +79,8 @@ public class ElokuvaController {
 		}
 		
 	// Elokuvien listaus HTML
-		@RequestMapping(value = "/elokuvatUusi", method = RequestMethod.GET)
+		@RequestMapping(value = "/elokuvatUusi", method = RequestMethod.GET, produces="application/json;charset=UTF-8")
 		public String listaaE(Model model) throws IOException {
-			List<Elokuva> elokuvat = new ArrayList<Elokuva>();
-			elokuvat = edao.findAll();
-			model.addAttribute("elokuvat", elokuvat);
 
 			return "elokuvaListaUusi.html";
 	}
