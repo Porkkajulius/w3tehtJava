@@ -8,13 +8,11 @@ app.controller('ElokuvaController', function($scope, $http) {
     });
     
     //lisää elokuva
-    $scope.luoElokuva = function($scope, $http) {
-    	$http.get("/api/elokuva/uusi")
+    $scope.luoElokuva = function(nimi) {
+    	console.log(nimi);
+    	$http.post("/api/elokuva/uusi")  	
     	.then(function(response) {
-            $scope.uusiElokuva = response.data;
-            console.log($scope.luoElokuva);
-
-
+            console.log(response);
     	});
     }
  

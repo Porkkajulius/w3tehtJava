@@ -68,19 +68,13 @@ public class ApiController {
 			return "redirect:/";
 		}
 		
-		// Elokuvan luonti GET
-		@RequestMapping(value = "/api/elokuva/uusi", method = RequestMethod.GET)
-		public String LuoE(Model model) throws IOException {
-			Elokuva elokuva = new Elokuva();
-			model.addAttribute("elokuva", elokuva);
-			return "uusiElokuva";
-		}
-
 		// Elokuva luonti POST
 		@RequestMapping(value = "/api/elokuva/uusi", method = RequestMethod.POST, produces="application/json;charset=UTF-8")
-		public String vastaanotaE(@ModelAttribute(value = "elokuva") Elokuva elokuva) {
+		@ResponseStatus(HttpStatus.OK)
+		public @ResponseBody String luoElokuva(@ModelAttribute(value = "elokuva") Elokuva elokuva) {
+			System.out.println("elokuvan luonnissa "+ elokuva);
 			edao.luoElokuva(elokuva);
-			return "redirect:/elokuvat";
+			return "redirect:/";
 		}
 		
 
